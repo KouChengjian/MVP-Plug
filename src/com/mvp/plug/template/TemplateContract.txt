@@ -1,10 +1,5 @@
 package $packagename;
 
-import com.shangyizhijia.medicine.di.scope.PerActivity;
-import com.shangyizhijia.medicine.mvp.base.BaseModule;
-import com.shangyizhijia.medicine.mvp.base.BasePresenter;
-import com.shangyizhijia.medicine.mvp.base.BaseView;
-import com.shangyizhijia.medicine.mvp.presenter.HomePresenter;
 
 import dagger.Binds;
 import dagger.Module;
