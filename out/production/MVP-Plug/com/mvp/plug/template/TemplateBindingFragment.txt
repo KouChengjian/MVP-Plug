@@ -9,7 +9,7 @@ import $basepackagename.BaseMvpActivity;
  * Date $date
  * Description: 自动生成 添加到Activity中的Module里面
  */
-public abstract class ActivityBindingModule {
+public abstract class FragmentBindingModule {
 
      @PerFragment
      @ContributesAndroidInjector(modules = $nameContract.$nameModule.class)

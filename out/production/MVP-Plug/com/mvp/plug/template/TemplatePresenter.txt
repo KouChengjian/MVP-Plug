@@ -1,14 +1,12 @@
 package $packagename;
 
-import android.content.Context;
-
 /**
  * Created with Android Studio.
  * User $author
  * Date $date
  * Description: 自动生成
  */
-@PerActivity
+$scope
 public class $namePresenter implements $nameContract.Presenter{
 
     private $nameContract.View view;

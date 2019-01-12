@@ -69,13 +69,13 @@ public class MyMvpGenerate extends AnAction {
         myDialog.setVisible(true);
     }
 
-    private void createClassFiles(){
-        if(mModuleType.contains("activity")){
+    private void createClassFiles() {
+        if (mModuleType.contains("activity")) {
             createClassFile(CodeType.Activity);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingActivity);
-        } else if(mModuleType.contains("fragment")){
+        } else if (mModuleType.contains("fragment")) {
             createClassFile(CodeType.Fragment);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
@@ -135,6 +135,14 @@ public class MyMvpGenerate extends AnAction {
         if (content.contains("$basepackagename")) {
             content = content.replace("$basepackagename", packageName + ".base");
         }
+        if (content.contains("$scope")) {
+            if (mModuleType.contains("activity")) {
+                content = content.replace("$scope", "@PerActivity");
+            } else if (mModuleType.contains("fragment")) {
+                content = content.replace("$scope", "@PerFragment");
+            }
+        }
+
         content = content.replace("$author", mAuthor);
         content = content.replace("$date", getDate());
         return content;
@@ -162,8 +170,8 @@ public class MyMvpGenerate extends AnAction {
     private void writeToFile(String content, String classPath, String className) {
         System.out.println(classPath + "        " + className);
         try {
-            if( project != null){
-                classPath = project.getBaseDir().getPath() +"/"+classPath;
+            if (project != null) {
+                classPath = project.getBaseDir().getPath() + "/generate/" + classPath;
             }
             File floder = new File(classPath);
             if (!floder.exists()) {
@@ -175,9 +183,6 @@ public class MyMvpGenerate extends AnAction {
                 file.createNewFile();
             }
             System.out.println(file.getAbsoluteFile());
-//            Messages.showErrorDialog(
-//                    file.getAbsoluteFile().toString(),
-//                className);
             FileWriter fw = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bw = new BufferedWriter(fw);
             bw.write(content);
@@ -229,13 +234,13 @@ public class MyMvpGenerate extends AnAction {
                 fileName = "TemplateBindingActivity.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
-                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "BindingActivity.java");
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "ActivityBindingModule.java");
                 break;
             case BindingFragment:
                 fileName = "TemplateBindingFragment.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
-                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "BindingFragment.java");
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "FragmentBindingModule.java");
                 break;
         }
     }
