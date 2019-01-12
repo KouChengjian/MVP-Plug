@@ -1,0 +1,45 @@
+package $packagename;
+
+import android.os.Bundle;
+import android.view.View;
+
+import $basepackagename.MvpBaseFragment;
+
+/**
+ * Created with Android Studio.
+ * User $author
+ * Date $date
+ * Description: 自动生成
+ */
+public class $nameFragment extends BaseMvpFragment<$namePresenter> implements $nameContract.View {
+
+    public static $nameFragment newInstance() {
+        $nameFragment fragment = new $nameFragment();
+        return fragment;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void created() {
+        super.created();
+    }
+
+    @Override
+    protected void bindEvent() {
+        super.bindEvent();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+}

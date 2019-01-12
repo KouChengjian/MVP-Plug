@@ -1,0 +1,29 @@
+package $packagename;
+
+import $basepackagename.BasePresenter;
+import $basepackagename.BaseView;
+
+/**
+ * Created with Android Studio.
+ * User $author
+ * Date $date
+ * Description: 自动生成
+ */
+public class $nameContract {
+
+    public interface View extends BaseView {
+
+    }
+
+    public interface Presenter extends BasePresenter<View> {
+
+    }
+
+    @Module
+    public abstract class $nameModule implements BaseModule{
+
+        @PerActivity
+        @Binds
+        abstract Presenter presenter($namePresenter presenter);
+    }
+}

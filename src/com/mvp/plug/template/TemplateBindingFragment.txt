@@ -1,0 +1,17 @@
+package $packagename;
+
+import $basepackagename.BaseMvpActivity;
+import $basepackagename.BaseMvpActivity;
+
+/**
+ * Created with Android Studio.
+ * User $author
+ * Date $date
+ * Description: 自动生成 添加到Activity中的Module里面
+ */
+public abstract class ActivityBindingModule {
+
+     @PerFragment
+     @ContributesAndroidInjector(modules = $nameContract.$nameModule.class)
+     abstract $nameFragment $nameFragment();
+}

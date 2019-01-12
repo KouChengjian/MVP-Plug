@@ -1,0 +1,42 @@
+<idea-plugin>
+  <id>com.your.company.unique.plugin.id</id>
+  <name>MVP-Plug-1.0.3</name>
+  <version>1.0.3</version>
+  <vendor email="hui793114465@163.com" url="http://www.yourcompany.com">kcj</vendor>
+
+  <description><![CDATA[
+      Enter short description for your plugin here.<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      1.0.3
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <!--<action id="MvpPlugin.ID" class="com.mvp.plug.action.MvpCreateAction" text="MvpHelper" description="生成mvp框架代码">-->
+      <!--<add-to-group group-id="CodeMenu" anchor="first"/>-->
+      <!--<keyboard-shortcut keymap="$default" first-keystroke="alt T"/>-->
+    <!--</action>-->
+    <action id="MvpPlugin.ID" class="com.mvp.plug.action.MyMvpGenerate" text="MvpGenerate" description="具体项目自动生成器">
+      <add-to-group group-id="CodeMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl T"/>
+    </action>
+  </actions>
+
+</idea-plugin>

@@ -1,0 +1,33 @@
+package $packagename;
+
+import $basepackagename.BaseMvpActivity;
+import $basepackagename.BaseMvpActivity;
+
+/**
+ * Created with Android Studio.
+ * User $author
+ * Date $date
+ * Description: 自动生成
+ */
+public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $nameContract.View {
+
+    @Override
+    protected int getLayoutId() {
+        return 0;
+    }
+
+    @Override
+    protected void created() {
+        super.created();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+}
