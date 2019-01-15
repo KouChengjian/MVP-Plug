@@ -1,7 +1,5 @@
 package $packagename;
 
-import $basepackagename.BaseMvpActivity;
-import $basepackagename.BaseMvpActivity;
 
 /**
  * Created with Android Studio.

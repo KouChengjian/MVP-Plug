@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.your.company.unique.plugin.id</id>
-  <name>MVP-Plug-1.0.4</name>
-  <version>1.0.4</version>
+  <name>MVP-Plug-1.0.5</name>
+  <version>1.0.5</version>
   <vendor email="hui793114465@163.com" url="http://www.yourcompany.com">kcj</vendor>
 
   <description><![CDATA[
@@ -10,7 +10,7 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      1.0.4
+      1.0.5
     ]]>
   </change-notes>
 
