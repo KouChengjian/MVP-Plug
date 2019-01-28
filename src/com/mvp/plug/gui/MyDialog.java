@@ -52,6 +52,8 @@ public class MyDialog extends JDialog {
 
         comboBox1.addItem("activity");
         comboBox1.addItem("fragment");
+        comboBox1.addItem("activityList");
+        comboBox1.addItem("fragmentList");
     }
 
     private void onOK() {

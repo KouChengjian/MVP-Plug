@@ -22,7 +22,7 @@ public class MyMvpGenerate extends AnAction {
     private String mModuleType;
 
     private enum CodeType {
-        Activity, Fragment, Contract, Presenter, BindingActivity, BindingFragment
+        Activity, ActivityList, Fragment, FragmentList, Contract, Presenter, BindingActivity, BindingFragment
     }
 
     public MyMvpGenerate() {
@@ -77,6 +77,16 @@ public class MyMvpGenerate extends AnAction {
             createClassFile(CodeType.BindingActivity);
         } else if (mModuleType.contains("fragment")) {
             createClassFile(CodeType.Fragment);
+            createClassFile(CodeType.Contract);
+            createClassFile(CodeType.Presenter);
+            createClassFile(CodeType.BindingFragment);
+        } else if (mModuleType.contains("activityList")) {
+            createClassFile(CodeType.ActivityList);
+            createClassFile(CodeType.Contract);
+            createClassFile(CodeType.Presenter);
+            createClassFile(CodeType.BindingActivity);
+        } else if (mModuleType.contains("fragmentList")) {
+            createClassFile(CodeType.FragmentList);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingFragment);
@@ -212,11 +222,23 @@ public class MyMvpGenerate extends AnAction {
                 content = dealTemplateContent(content);
                 writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "Activity.java");
                 break;
+            case ActivityList:
+                fileName = "TemplateActivityList.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "ActivityList.java");
+                break;
             case Fragment:
                 fileName = "TemplateFragment.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
                 writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "Fragment.java");
+                break;
+            case FragmentList:
+                fileName = "TemplateFragmentList.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "FragmentList.java");
                 break;
             case Contract:
                 fileName = "TemplateContract.txt";
