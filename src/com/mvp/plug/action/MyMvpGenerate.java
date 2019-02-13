@@ -22,7 +22,7 @@ public class MyMvpGenerate extends AnAction {
     private String mModuleType;
 
     private enum CodeType {
-        Activity, ActivityList, Fragment, FragmentList, Contract, Presenter, BindingActivity, BindingFragment
+        Activity, ActivityList, Fragment, FragmentList, Contract, Presenter, BindingActivity, BindingFragment, ActivityXML, FragmentXML
     }
 
     public MyMvpGenerate() {
@@ -72,21 +72,25 @@ public class MyMvpGenerate extends AnAction {
     private void createClassFiles() {
         if (mModuleType.contains("activity")) {
             createClassFile(CodeType.Activity);
+            createClassFile(CodeType.ActivityXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingActivity);
         } else if (mModuleType.contains("fragment")) {
             createClassFile(CodeType.Fragment);
+            createClassFile(CodeType.FragmentXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingFragment);
         } else if (mModuleType.contains("activityList")) {
             createClassFile(CodeType.ActivityList);
+            createClassFile(CodeType.ActivityXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingActivity);
         } else if (mModuleType.contains("fragmentList")) {
             createClassFile(CodeType.FragmentList);
+            createClassFile(CodeType.FragmentXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingFragment);
@@ -155,6 +159,7 @@ public class MyMvpGenerate extends AnAction {
 
         content = content.replace("$author", mAuthor);
         content = content.replace("$date", getDate());
+        content = content.replace("$xml", mModuleName.toLowerCase());
         return content;
     }
 
@@ -226,7 +231,7 @@ public class MyMvpGenerate extends AnAction {
                 fileName = "TemplateActivityList.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
-                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "ActivityList.java");
+                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "Activity.java");
                 break;
             case Fragment:
                 fileName = "TemplateFragment.txt";
@@ -238,7 +243,7 @@ public class MyMvpGenerate extends AnAction {
                 fileName = "TemplateFragmentList.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
-                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "FragmentList.java");
+                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "Fragment.java");
                 break;
             case Contract:
                 fileName = "TemplateContract.txt";
@@ -263,6 +268,18 @@ public class MyMvpGenerate extends AnAction {
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
                 writeToFile(content, appPath + mModuleName.toLowerCase(), "FragmentBindingModule.java");
+                break;
+            case ActivityXML:
+                fileName = "TemplateActivityXml.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "activity_" + mModuleName.toLowerCase() + ".xml");
+                break;
+            case FragmentXML:
+                fileName = "TemplateFragmentXml.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "fragment_" + mModuleName.toLowerCase() + ".xml");
                 break;
         }
     }

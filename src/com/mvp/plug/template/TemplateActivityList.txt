@@ -11,7 +11,7 @@ public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $n
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.activity_$xml;
     }
 
     @Override
