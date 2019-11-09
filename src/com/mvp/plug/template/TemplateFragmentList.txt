@@ -12,6 +12,13 @@ import android.view.View;
  */
 public class $nameFragment extends BaseMvpFragment<$namePresenter> implements $nameContract.View {
 
+    @BindView(R.id.toolBarView)
+    ToolBarView mToolBarView;
+    @BindView(R.id.commonRecycleview)
+    CommonRecycleView mCommonRecycleview;
+
+    $nameAdapter m$nameAdapter;
+
     public static $nameFragment newInstance() {
         $nameFragment fragment = new $nameFragment();
         return fragment;
@@ -25,16 +32,34 @@ public class $nameFragment extends BaseMvpFragment<$namePresenter> implements $n
     @Override
     protected void created() {
         super.created();
+        mToolBarView.setTitle("xxx");
+
+        mHelpAdapter = new HelpAdapter(getContext(), HelpConfig.helpDtoList);
+        mCommonRecycleview.setLinearLayoutManager();
+        mCommonRecycleview.setRefreshEnabled(true);
+        mCommonRecycleview.setLoadMoreEnabled(true);
+        mCommonRecycleview.setAdapter(mHelpAdapter);
+        mCommonRecycleview.startRefreshing();
     }
 
     @Override
     protected void bindEvent() {
         super.bindEvent();
+        EventUtil.click(this, mToolBarView);
+        EventUtil.recycleClick(this, mCommonRecycleview);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onDestroyView() {
+        if(mCommonRecycleview != null){
+            mCommonRecycleview.destroy();
+        }
+        super.onDestroyView();
     }
 
     @Override

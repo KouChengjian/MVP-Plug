@@ -15,8 +15,8 @@ public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $n
     }
 
     @Override
-    protected void created() {
-        super.created();
+    protected void created(Bundle savedInstanceState) {
+        super.created(savedInstanceState);
     }
 
     @Override

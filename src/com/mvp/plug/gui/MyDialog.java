@@ -73,7 +73,9 @@ public class MyDialog extends JDialog {
         MyDialog dialog = new MyDialog(new DialogCallBack() {
             @Override
             public void ok(String author, String moduleName, String moduleType) {
-                System.out.print("成功啦！！！！！！ " + "author = " + author + "moduleName = " + moduleName +"moduleType = " + moduleType);
+                System.out.print("成功啦！！！！！！ " + "author = " + author + " moduleName = " + moduleName +" moduleType = " + moduleType);
+
+
             }
         });
         dialog.pack();

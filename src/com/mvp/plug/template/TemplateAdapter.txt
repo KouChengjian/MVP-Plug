@@ -1,0 +1,32 @@
+package $packagename;
+
+
+/**
+ * Created with Android Studio.
+ * User $author
+ * Date $date
+ * Description: 自动生成
+ */
+public class $nameActivity extends CommonRecyclerAdapter {
+
+    public $nameAdapter(Context mContext) {
+        super(mContext);
+    }
+
+    @Override
+    public RecyclerView.ViewHolder createView(ViewGroup parent, int viewType) {
+        return new ViewHolder(getItemView(R.layout.item_$xml, parent));
+    }
+
+    @Override
+    public void bindView(RecyclerView.ViewHolder holder, int position) {
+        ((ViewHolder) holder).bindData(mContext, getList(), position);
+    }
+
+    public class ViewHolder extends CommonRecyclerViewHolder {
+        public ViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
+}

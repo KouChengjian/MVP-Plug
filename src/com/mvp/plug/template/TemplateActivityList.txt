@@ -9,6 +9,13 @@ package $packagename;
  */
 public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $nameContract.View {
 
+    @BindView(R.id.toolBarView)
+    ToolBarView mToolBarView;
+    @BindView(R.id.commonRecycleview)
+    CommonRecycleView mCommonRecycleview;
+
+    $nameAdapter m$nameAdapter;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_$xml;
@@ -17,6 +24,21 @@ public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $n
     @Override
     protected void created() {
         super.created();
+        mToolBarView.setTitle("xxx");
+
+        mHelpAdapter = new HelpAdapter(getContext(), HelpConfig.helpDtoList);
+        mCommonRecycleview.setLinearLayoutManager();
+        mCommonRecycleview.setRefreshEnabled(true);
+        mCommonRecycleview.setLoadMoreEnabled(true);
+        mCommonRecycleview.setAdapter(mHelpAdapter);
+        mCommonRecycleview.startRefreshing();
+    }
+
+    @Override
+    protected void bindEvent() {
+        super.bindEvent();
+        EventUtil.click(this, mToolBarView);
+        EventUtil.recycleClick(this, mCommonRecycleview);
     }
 
     @Override
@@ -26,6 +48,9 @@ public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $n
 
     @Override
     protected void onDestroy() {
+        if(mCommonRecycleview != null){
+            mCommonRecycleview.destroy();
+        }
         super.onDestroy();
     }
 }

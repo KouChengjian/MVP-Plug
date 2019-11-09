@@ -19,4 +19,9 @@ public class $namePresenter implements $nameContract.Presenter{
     public void take($nameContract.View view) {
         this.view = view;
     }
+
+    @Override
+    public void destroy($nameContract.View view) {
+
+    }
 }

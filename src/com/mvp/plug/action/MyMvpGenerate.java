@@ -22,7 +22,10 @@ public class MyMvpGenerate extends AnAction {
     private String mModuleType;
 
     private enum CodeType {
-        Activity, ActivityList, Fragment, FragmentList, Contract, Presenter, BindingActivity, BindingFragment, ActivityXML, FragmentXML
+        Activity, ActivityXML, ActivityList, ActivityListXML,
+        Fragment, FragmentXML, FragmentList, FragmentListXML,
+        Contract, Presenter, BindingActivity, BindingFragment,
+        Adapter, AdapterXml
     }
 
     public MyMvpGenerate() {
@@ -70,30 +73,34 @@ public class MyMvpGenerate extends AnAction {
     }
 
     private void createClassFiles() {
-        if (mModuleType.contains("activity")) {
+        if (mModuleType.equals("activity")) {
             createClassFile(CodeType.Activity);
             createClassFile(CodeType.ActivityXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingActivity);
-        } else if (mModuleType.contains("fragment")) {
+        } else if (mModuleType.equals("fragment")) {
             createClassFile(CodeType.Fragment);
             createClassFile(CodeType.FragmentXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingFragment);
-        } else if (mModuleType.contains("activityList")) {
+        } else if (mModuleType.equals("activityList")) {
             createClassFile(CodeType.ActivityList);
-            createClassFile(CodeType.ActivityXML);
+            createClassFile(CodeType.ActivityListXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingActivity);
-        } else if (mModuleType.contains("fragmentList")) {
+            createClassFile(CodeType.Adapter);
+            createClassFile(CodeType.AdapterXml);
+        } else if (mModuleType.equals("fragmentList")) {
             createClassFile(CodeType.FragmentList);
-            createClassFile(CodeType.FragmentXML);
+            createClassFile(CodeType.FragmentListXML);
             createClassFile(CodeType.Contract);
             createClassFile(CodeType.Presenter);
             createClassFile(CodeType.BindingFragment);
+            createClassFile(CodeType.Adapter);
+            createClassFile(CodeType.AdapterXml);
         } else {
             Messages.showInfoMessage(project, "请输入Activity或者Fragment", "警告");
         }
@@ -275,23 +282,53 @@ public class MyMvpGenerate extends AnAction {
                 content = dealTemplateContent(content);
                 writeToFile(content, appPath + mModuleName.toLowerCase(), "activity_" + mModuleName.toLowerCase() + ".xml");
                 break;
+            case ActivityListXML:
+                fileName = "TemplateActivityListXml.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "activity_" + mModuleName.toLowerCase() + ".xml");
+                break;
             case FragmentXML:
                 fileName = "TemplateFragmentXml.txt";
                 content = ReadTemplateFile(fileName);
                 content = dealTemplateContent(content);
                 writeToFile(content, appPath + mModuleName.toLowerCase(), "fragment_" + mModuleName.toLowerCase() + ".xml");
                 break;
+            case FragmentListXML:
+                fileName = "TemplateFragmentListXml.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "fragment_" + mModuleName.toLowerCase() + ".xml");
+                break;
+            case Adapter:
+                fileName = "TemplateAdapter.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), mModuleName + "Adapter.java");
+                break;
+            case AdapterXml:
+                fileName = "TemplateAdapterXml.txt";
+                content = ReadTemplateFile(fileName);
+                content = dealTemplateContent(content);
+                writeToFile(content, appPath + mModuleName.toLowerCase(), "item_" + mModuleName.toLowerCase() + ".xml");
+                break;
         }
     }
 
 
     public static void main(String[] args) {
-        MyMvpGenerate mvpCreateAction = new MyMvpGenerate("kcj", "Mode");
-        mvpCreateAction.createClassFile(CodeType.Activity);
-        mvpCreateAction.createClassFile(CodeType.Fragment);
-        mvpCreateAction.createClassFile(CodeType.Contract);
-        mvpCreateAction.createClassFile(CodeType.Presenter);
-        mvpCreateAction.createClassFile(CodeType.BindingActivity);
-        mvpCreateAction.createClassFile(CodeType.BindingFragment);
+        MyMvpGenerate mvpCreateAction = new MyMvpGenerate("kcj", "Test");
+//        mvpCreateAction.createClassFile(CodeType.Activity);
+//        mvpCreateAction.createClassFile(CodeType.Fragment);
+//        mvpCreateAction.createClassFile(CodeType.Contract);
+//        mvpCreateAction.createClassFile(CodeType.Presenter);
+//        mvpCreateAction.createClassFile(CodeType.BindingActivity);
+//        mvpCreateAction.createClassFile(CodeType.BindingFragment);
+//        mvpCreateAction.createClassFile(CodeType.FragmentList);
+//        mvpCreateAction.createClassFile(CodeType.FragmentListXML);
+//        mvpCreateAction.createClassFile(CodeType.Adapter);
+//        mvpCreateAction.createClassFile(CodeType.AdapterXml);
+//        mvpCreateAction.createClassFile(CodeType.ActivityList);
+//        mvpCreateAction.createClassFile(CodeType.ActivityListXML);
     }
 }
