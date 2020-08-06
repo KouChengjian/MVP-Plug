@@ -7,7 +7,7 @@ package $packagename;
  * Date $date
  * Description: 自动生成
  */
-public class $nameActivity extends CommonRecyclerAdapter {
+public class $nameAdapter extends CommonRecyclerAdapter {
 
     public $nameAdapter(Context mContext) {
         super(mContext);

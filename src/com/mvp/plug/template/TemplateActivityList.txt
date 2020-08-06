@@ -22,15 +22,15 @@ public class $nameActivity extends BaseMvpActivity<$namePresenter> implements $n
     }
 
     @Override
-    protected void created() {
-        super.created();
+    protected void created(Bundle savedInstanceState) {
+        super.created(savedInstanceState);
         mToolBarView.setTitle("xxx");
 
-        mHelpAdapter = new HelpAdapter(getContext(), HelpConfig.helpDtoList);
+        m$nameAdapter = new $nameAdapter(getContext());
         mCommonRecycleview.setLinearLayoutManager();
         mCommonRecycleview.setRefreshEnabled(true);
         mCommonRecycleview.setLoadMoreEnabled(true);
-        mCommonRecycleview.setAdapter(mHelpAdapter);
+        mCommonRecycleview.setAdapter(m$nameAdapter);
         mCommonRecycleview.startRefreshing();
     }
 
